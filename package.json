@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "start": "ts-node src/server.ts"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

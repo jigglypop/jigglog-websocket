@@ -4,7 +4,6 @@ import nodemailer from "nodemailer"
 
 export const mailController = async (req: Request, res: Response) => {
     const { name, email, phone, country, memberId  } = req.body
-    console.log(process.env.USERNAME)
     const transporter = nodemailer.createTransport({
         service: 'naver',
         host: 'smtp.naver.com',  // SMTP 서버명
