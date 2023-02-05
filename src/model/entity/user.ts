@@ -28,6 +28,9 @@ export class User {
   email!: string;
 
   @Column()
+  imageUrl!: string;
+
+  @Column()
   permission: number = 4;
 
   @OneToOne(() => Register, (register) => register.user)

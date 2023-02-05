@@ -1,4 +1,4 @@
-import { IPost } from "./register";
+import { IRegister } from "./register";
 
 export type IUser = {
   id: number;
@@ -6,5 +6,5 @@ export type IUser = {
   hashedPassword: string;
   email: string;
   permission: number;
-  posts: IPost[];
+  register: IRegister;
 };

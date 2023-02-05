@@ -9,7 +9,7 @@ import { serialize } from "../util/serialize";
 import RegisterRepository from "../repository/register";
 
 export const signUpService = async (req: Request, res: Response) => {
-  const { name, password, email } = req.body;
+  const { name, password, email, imageUrl } = req.body;
   if (!name || !password) throw new Error(TYPE_ALL);
   const userRepository = getCustomRepository(UserRepository);
   const registerRepository = getCustomRepository(RegisterRepository);
@@ -18,6 +18,7 @@ export const signUpService = async (req: Request, res: Response) => {
     name,
     hashedPassword,
     email,
+    imageUrl,
     4
   );
   if (!userId) throw new Error(FAIL);

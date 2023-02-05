@@ -8,6 +8,7 @@ export default class UserRepository extends Repository<User> {
     name: string,
     hashedPassword: string,
     email: string,
+    imageUrl: string,
     permission: number
   ) {
     const user = await this.createQueryBuilder()
@@ -16,6 +17,7 @@ export default class UserRepository extends Repository<User> {
         name,
         hashedPassword,
         email,
+        imageUrl,
         permission,
       })
       .execute();
