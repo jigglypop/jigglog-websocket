@@ -4,11 +4,8 @@ FROM node:21-alpine as builder
 WORKDIR /app
 
 # 앱 의존성 설치
-COPY package*.json ./
-
-RUN yarn
-# 앱 소스 추가
+COPY package.json yarn.lock node_modules ./
 COPY . .
 
 EXPOSE 8000
-CMD [ "ts-node", "src/server.ts" ]
+CMD [ "yarn", "start" ]
