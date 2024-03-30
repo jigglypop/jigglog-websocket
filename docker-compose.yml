@@ -1,0 +1,14 @@
+name: jigglogsocket
+services:
+  socket:
+    image: ydh2244/jigglogsocket
+    container_name: jigglogsocket
+    platform: linux/amd64
+    networks:
+      - internal-network
+    ports:
+      - 8000:8000
+
+networks:
+  internal-network:
+    driver: bridge

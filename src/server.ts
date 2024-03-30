@@ -25,12 +25,10 @@ app;
 const users: any = {};
 const states: any = {};
 io.on("connection", (socket) => {
-  console.log("a user connected");
   // join : 채팅 참여 이벤트
   socket.on("join", ({ room, username }) => {
     socket.join(room);
     users[username] = username;
-    console.log(username);
     io.to(room).emit("onConnect", {
       msg: `${username} 님이 입장했습니다.`,
       users,
