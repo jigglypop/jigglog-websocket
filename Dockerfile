@@ -6,7 +6,7 @@ WORKDIR /app
 # 앱 의존성 설치
 COPY package*.json ./
 
-RUN yarn add
+RUN yarn
 # 앱 소스 추가
 COPY . .
 
