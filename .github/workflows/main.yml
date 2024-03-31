@@ -50,7 +50,7 @@ jobs:
       - name: Deploy to prod
         uses: appleboy/ssh-action@master
         with:
-          key: ${{ secrets.AWS_IAM_MANAGER_SECRET_ACCESS_KEY }}
+          key: ${{ secrets.AWS_SSH_KEY }}
           host: ${{ secrets.EC2_HOST_IP4_PUBLIC }} # EC2 퍼블릭 IPv4 DNS
           username: ubuntu
           # password: ${{ secrets.UBUNTU_PRIVATE_KEY }}
