@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_NAME: jigglogsocket
   BK_NAME: jigglogsocket
-  APP_NAME: jigglogkotlin
+  { APP_NAME }: jigglogkotlin
   DEPLOY_GROUP: jigglogkotlin
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install $APP_NAME server
+      - name: yarn install ${APP_NAME} server
         run: |
           yarn
 
@@ -40,8 +40,8 @@ jobs:
       - name: Docker build & push to prod
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/$APP_NAME .
-          docker push ${{ secrets.DOCKER_USERNAME }}/$APP_NAME
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${APP_NAME} .
+          docker push ${{ secrets.DOCKER_USERNAME }}/${APP_NAME}
 
       ## deploy to production
       - name: Deploy to prod
@@ -53,8 +53,8 @@ jobs:
           port: 22
           script: |
             sudo docker ps
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/$APP_NAME
-            sudo docker run -d -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/$APP_NAME --name $APP_NAME
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${APP_NAME}
+            sudo docker run -d -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/${APP_NAME} --name ${APP_NAME}
             sudo docker image prune -f
       # - name: Make zip file
       #   run: zip -qq -r ./$GITHUB_SHA.zip .
@@ -70,4 +70,4 @@ jobs:
 #         run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$BK_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
 #
 #       - name: Code Deploy
-#         run: aws deploy create-deployment --application-name $APP_NAME --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name $DEPLOY_GROUP --s3-location bucket=$BK_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+#         run: aws deploy create-deployment --application-name ${APP_NAME} --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name $DEPLOY_GROUP --s3-location bucket=$BK_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
