@@ -57,6 +57,8 @@ jobs:
           port: 22
           script: |
             sudo docker ps
+            sudo docker rm -f jigglogsocket
+            sudo docker rmi -f ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
             sudo docker compose -f docker-compose.yml up -d --build 
             sudo docker image prune -f
