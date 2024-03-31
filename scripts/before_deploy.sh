@@ -19,7 +19,7 @@ fi
 # 2. 이전 도커 컨테이너 삭제
 now_time=`date`
 echo "[$now_time] 2) 이전 도커 컨테이너 삭제" >> /home/ubuntu/log.txt
-sudo docker rm -f $REPOSITOR} >> /home/ubuntu/log.txt
+sudo docker rm -f $REPOSITOR >> /home/ubuntu/log.txt
 sudo docker rmi -f ydh2244/${REPOSITORY} >> /home/ubuntu/log.txt
 
 now_time=`date`
