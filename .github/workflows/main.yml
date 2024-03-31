@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install ${APP_NAME} server
+      - name: yarn install server
         run: |
           yarn
 
