@@ -53,14 +53,13 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           host: ${{ secrets.EC2_HOST_IP4_PUBLIC }} # EC2 퍼블릭 IPv4 DNS
           username: ubuntu
-          # password: ${{ secrets.UBUNTU_PRIVATE_KEY }}
           port: 22
           script: |
             sudo docker ps
             sudo docker rm -f jigglogsocket
             sudo docker rmi -f ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
-            sudo docker run -d -p 8081:8081 ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
+            sudo docker run -d -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/jigglogsocket
             sudo docker image prune -f
 
       # - name: Transfer to EC2
