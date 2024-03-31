@@ -53,7 +53,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST_IP4_PUBLIC }} # EC2 퍼블릭 IPv4 DNS
           username: ubuntu
-          password: ${{ secrets.UBUNTU_PRIVATE_KEY }}
+          # password: ${{ secrets.UBUNTU_PRIVATE_KEY }}
           port: 22
           key: ${{ secrets.AWS_IAM_MANAGER_SECRET_ACCESS_KEY }}
           script: |
