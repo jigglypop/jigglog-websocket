@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_NAME: jigglogsocket
   BK_NAME: jigglogsocket
-  { APP_NAME }: jigglogkotlin
+  APP_NAME: jigglogkotlin
   DEPLOY_GROUP: jigglogkotlin
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install server
+      - name: yarn install ${APP_NAME} server
         run: |
           yarn
 
